@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="132.5388mm"
+   height="63.388138mm"
+   viewBox="0 0 132.5388 63.388138"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="Rastergrafik.png"
+   inkscape:export-xdpi="60.476189"
+   inkscape:export-ydpi="60.476189"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="Zeichnung.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="333.7544"
+     inkscape:cy="281.07494"
+     inkscape:window-width="2160"
+     inkscape:window-height="1334"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-7.6729156,-8.2020819)">
+    <rect
+       style="fill:#000000;stroke-width:1.52786"
+       id="rect4-0-09"
+       width="132.53879"
+       height="63.388142"
+       x="7.6729155"
+       y="8.2020817" />
+    <a
+       id="a11"
+       transform="matrix(1.5796684,0,0,1.5796684,-265.36068,-348.65046)">
+      <text
+         style="font-size:24.397px;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#ffffff;stroke-width:3.27053;stroke-dasharray:none"
+         x="209.23654"
+         y="244.85666"
+         id="text14"
+         transform="scale(0.9837263,1.0165429)">S</text>
+      <text
+         style="font-size:24.397px;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#ffffff;stroke-width:3.27053;stroke-dasharray:none"
+         x="225.9142"
+         y="244.85666"
+         id="text13"
+         transform="scale(0.9837263,1.0165429)">D</text>
+      <text
+         style="font-size:24.397px;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#ffffff;stroke-width:3.27053;stroke-dasharray:none"
+         x="244.71231"
+         y="244.85666"
+         id="text12"
+         transform="scale(0.9837263,1.0165429)">L</text>
+    </a>
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:3.05974;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.815304,43.469188 h 14.982471 l 3.9826,-7.070518 8.622793,29.65023 8.733463,-52.305385 8.423541,35.433266 5.079097,-5.636338 h 74.411761"
+       id="path4-0-5-0-2"
+       sodipodi:nodetypes="cccccccc" />
+  </g>
+</svg>
