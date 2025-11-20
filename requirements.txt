@@ -5,3 +5,5 @@ nidaqmx==1.2.0
 PyQt6==6.4.2
 PyQt6-WebEngine==6.4
 pyqt6-tools==6.4.2.3.3
+pandas==2.3.3
+sdypy==0.5.1
