@@ -75,6 +75,7 @@ for rpm_idx, rpm in enumerate(rot_speeds):
     for pos in range(n_positions):
         F_input = F_all[pos, rpm_idx, :][np.newaxis, :]
 
+
         # y-Richtung
         Y_output_y = Y_all_y[pos, rpm_idx, :][np.newaxis, :]
         frf_y = FRF.FRF(fs, F_input, Y_output_y)
@@ -147,9 +148,9 @@ df_list = pd.DataFrame(results)
 # Dataframe multiindex 
 df_multi = df_list.set_index(['Position', 'Direction', 'RPM'])
 
-print(df_multi.loc[(4, 'Y', 500)])
+    # print(df_multi.loc[(4, 'Y', 500)])
 
 
 
 # CSV speichern
-#df_list.to_csv("modal_analysis_results.csv", index=False)
+df_list.to_csv("modal_analysis_results.csv", index=False)
