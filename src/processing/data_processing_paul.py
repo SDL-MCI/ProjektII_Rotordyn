@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from sdypy import EMA, FRF
-
+import os
 
 
 
@@ -74,8 +74,11 @@ n_positions = 6
 
 
 
-data = np.load(r"C:\Users\psupp\Documents\ProjektII_Rotordyn\rotor_acc_data.npz")       # pfad mit messdaten
-
+# Get Meas Data
+base_dir = os.path.dirname(os.path.abspath(__file__))                   # Get the directory of the current script
+file_path = os.path.join(base_dir, "..", "test", "rotor_acc_data.npz")  # Go one folder up and into "test"
+file_path = os.path.abspath(file_path)                                  # Normalize the path (resolves "..")
+data = np.load(file_path)
 
 F_all   = data["F_all"]
 Y_all_y = data["Y_all_y"]
@@ -90,6 +93,8 @@ results = []
 for rpm_idx, rpm in enumerate(rot_speeds):
     for pos in range(n_positions):
         F_input = F_all[pos, rpm_idx, :][np.newaxis, :]
+
+        print(np.size(F_all))
 
         # y-Richtung
         Y_output_y = Y_all_y[pos, rpm_idx, :][np.newaxis, :]

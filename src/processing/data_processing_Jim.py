@@ -23,6 +23,10 @@ get_modes_at(rpm, direction)
 class RotorDynEMA:
     def __init__(self, fs, T, rot_speeds, n_positions):
         # config
+        #self.frf_type = "receptance"
+        self.frf_type = "accelerance"
+
+
         self.fs = fs
         self.T = T
         self.n_samples = int(T*fs)                  # for generated data only....
@@ -48,6 +52,7 @@ class RotorDynEMA:
         # Mode shapes / full SIMO models per direction & RPM
         # self.modeshapes['Y'][rpm] = dict(A, nat_freq, nat_xi, freq, model)
         self.modeshapes = {'Y': {}, 'Z': {}}
+
 
     # Simulation of signals
     def simulate_signals(self, n_impacts, impact_starts):
@@ -99,15 +104,15 @@ class RotorDynEMA:
         self.Y_all_y = Y_all_y
         self.Y_all_z = Y_all_z
 
+    
     # using with real data
-    def set_measured_signals(self, t, F_all, Y_all_y, Y_all_z):
+    def set_measured_signals(self, F_all, Y_all_y, Y_all_z):
         """
         Attach real measurement data.
         Shapes:
         F_all      : (n_positions, n_rpms, n_samples)
         Y_all_y/z  : (n_positions, n_rpms, n_samples)
         """
-        self.t = t
         self.F_all = F_all
         self.Y_all_y = Y_all_y
         self.Y_all_z = Y_all_z
@@ -229,7 +234,7 @@ class RotorDynEMA:
                     lower=lower,
                     upper=upper,
                     pol_order_high=pol_order_high,
-                    frf_type="receptance",
+                    frf_type=self.frf_type,
                 )
 
                 # LSCF: poles for many model orders
@@ -285,8 +290,6 @@ class RotorDynEMA:
                 H_rec, A_raw = model.get_constants()
 
 
-
-
                 # We want: rows = modes, columns = positions.
                 if A_raw.shape[0] == self.n_positions:
                     # rows = positions, cols = modes -> transpose
@@ -294,9 +297,6 @@ class RotorDynEMA:
                 elif A_raw.shape[1] == self.n_positions:
                     # rows = modes, cols = positions -> already good
                     A_modes = A_raw
-
-
-
 
                 
                 # Store full SIMO model for later (mode shapes, stability chart, etc.)
@@ -378,7 +378,9 @@ class RotorDynEMA:
             ax1.scatter(
                 freq_p,
                 np.full_like(freq_p, order_idx + 1, dtype=float),
-                marker="+",
+                marker="o",
+                facecolor='none',
+                edgecolors='blue',
                 s=20,
                 alpha=0.7,
             )
@@ -401,7 +403,7 @@ class RotorDynEMA:
         ax2 = ax1.twinx()
         ax2.plot(freq_band, avg_mag, color="orange", linewidth=2)
         ax2.set_yscale("log")
-        ax2.set_ylabel("Averaged |FRF|")
+        ax2.set_ylabel("MAgnitude |FRF|")
 
         fig.suptitle(f"Stability Diagram: rpm={rpm}, direction={direction}")
         plt.tight_layout()
