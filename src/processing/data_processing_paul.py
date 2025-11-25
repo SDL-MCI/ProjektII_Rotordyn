@@ -12,6 +12,13 @@ rot_speeds = [0]#[500, 1000, 1500]  # rpm
 n_positions = 6
 
 
+f_low = 10
+f_high = 100
+zeta_low = 0
+zeta_high = 0.2
+poles_real = 0
+
+
 # # SIMULATING SIGNALS
 
 # # Beispiel-Moden (gedämpfte Sinus)
@@ -122,8 +129,8 @@ for rpm_idx, rpm in enumerate(rot_speeds):
         poles_y = model_y.all_poles[-1]  # letzte Ordnung
         freq_y = np.abs(np.imag(poles_y))/(2*np.pi)
         zeta_y = -np.real(poles_y)/np.abs(poles_y)
-        
-        valid_y = (freq_y>10) & (freq_y<200) & (zeta_y>0) & (zeta_y<0.2) & (np.real(poles_y)<0)
+
+        valid_y = (freq_y>f_low) & (freq_y<f_high) & (zeta_y>zeta_low) & (zeta_y<zeta_high) & (np.real(poles_y)<poles_real)
         poles_y = poles_y[valid_y]
         freq_y = freq_y[valid_y]
         zeta_y = zeta_y[valid_y]
@@ -136,7 +143,7 @@ for rpm_idx, rpm in enumerate(rot_speeds):
         freq_z = np.abs(np.imag(poles_z))/(2*np.pi)
         zeta_z = -np.real(poles_z)/np.abs(poles_z)
         
-        valid_z = (freq_z>10) & (freq_z<200) & (zeta_z>0) & (zeta_z<0.2) & (np.real(poles_z)<0)
+        valid_z = (freq_z>f_low) & (freq_z<f_high) & (zeta_z>zeta_low) & (zeta_z<zeta_high) & (np.real(poles_z)<poles_real)
         poles_z = poles_z[valid_z]
         freq_z = freq_z[valid_z]
         zeta_z = zeta_z[valid_z]
@@ -168,10 +175,7 @@ df_list = pd.DataFrame(results)
 
 # Dataframe multiindex 
 df_multi = df_list.set_index(['Position', 'Direction', 'RPM'])
-
-#print(df_multi.loc[(4, 'Y', 500)])
-
-print(df_multi)
+#print(df_multi)
 
 # CSV speichern
 #df_list.to_csv("modal_analysis_results.csv", index=False)
