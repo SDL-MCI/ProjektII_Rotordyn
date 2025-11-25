@@ -170,7 +170,7 @@ df_list = pd.DataFrame(results)
 
 # Dataframe multiindex 
 df_multi = df_list.set_index(['Position', 'Direction', 'RPM'])
-print(df_multi)
+#print(df_multi)
 
 # CSV speichern
-df_list.to_csv("modal_analysis_results.csv", index=False)
+#df_list.to_csv("modal_analysis_results.csv", index=False)
